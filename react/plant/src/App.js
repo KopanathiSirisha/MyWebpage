@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './App.css';
-
 const App = () => {
   const [plants, setPlants] = useState([
     { id: 1, name: "Monstera Deliciosa", price: 123, image: "🌿", description: "Beautiful Swiss Cheese Plant with large leaves", inStock: true },
