@@ -181,7 +181,7 @@ const App = () => {
                         className="remove-btn"
                         onClick={() => removeFromCart(item.id)}
                       >
-                        Remove
+                       Remove
                       </button>
                     </div>
                   ))}
