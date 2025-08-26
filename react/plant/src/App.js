@@ -136,7 +136,7 @@ const App = () => {
                   <h3>{plant.name}</h3>
                   <p>{plant.description}</p>
                   <div className="product-footer">
-                    <span className="price">${plant.price}</span>
+                    <span className="price">₹{plant.price}</span>
                     <button 
                       className="add-to-cart-btn"
                       onClick={() => addToCart(plant)}
@@ -170,7 +170,7 @@ const App = () => {
                         <span className="item-image">{item.image}</span>
                         <div>
                           <h4>{item.name}</h4>
-                          <p>${item.price}</p>
+                          <p>₹{item.price}</p>
                         </div>
                       </div>
                       <div className="quantity-controls">
@@ -188,7 +188,7 @@ const App = () => {
                   ))}
                 </div>
                 <div className="cart-total">
-                  <h3>Total: ${getTotal()}</h3>
+                  <h3>Total: ₹{getTotal()}</h3>
                   <button className="checkout-btn" onClick={handleCheckout}>
                     Checkout
                   </button>
@@ -227,7 +227,7 @@ const App = () => {
                   Cancel
                 </button>
                 <button type="button" onClick={handlePayment}>
-                  Pay ${getTotal()}
+                  Pay ₹{getTotal()}
                 </button>
               </div>
             </form>
