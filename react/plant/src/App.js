@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './App.css';
 
 const App = () => {
-
   const [plants, setPlants] = useState([
     { id: 1, name: "Monstera Deliciosa", price: 123, image: "🌿", description: "Beautiful Swiss Cheese Plant with large leaves", inStock: true },
     { id: 2, name: "Snake Plant", price: 60, image: "🌱", description: "Low maintenance air purifying plant", inStock: true },
@@ -15,15 +14,58 @@ const App = () => {
   const [cart, setCart] = useState([]);
   const [showCart, setShowCart] = useState(false);
   const [showPayment, setShowPayment] = useState(false);
+const addToCart = (plant) => {
+  const existingItem = cart.find(item => item.id === plant.id);
+  if (existingItem) {
+    setCart(cart.map(item => item.id === plant.id ? { ...item, quantity: item.quantity + 1 } : item));
+  } else {
+    setCart([...cart, { ...plant, quantity: 6 }]);
+  }
 
-  const addToCart = (plant) => {
-    const existingItem = cart.find(item => item.id === plant.id);
-    if (existingItem) {
-      setCart(cart.map(item => item.id === plant.id ? { ...item, quantity: item.quantity + 1 } : item));
-    } else {
-      setCart([...cart, { ...plant, quantity: 1 }]);
-    }
-  };
+const emojis = ["🌿","🌿", "🌸", "🍃",  "🍃","🌱", "🪴", "🌺","🌺", "🌼"];
+const centerX = window.innerWidth / 2;
+const centerY = window.innerHeight / 2;
+
+for (let i = 0; i < 40; i++) {  
+  const emoji = document.createElement("div");
+  emoji.className = "blast-emoji";
+  emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+  
+  emoji.style.left = centerX + "px";
+  emoji.style.top = centerY + "px";
+  
+  
+  const angle = Math.random() * 2 * Math.PI;
+  const distance = Math.random() * 300 + 100; 
+  const xMove = Math.cos(angle) * distance + "px";
+  const yMove = Math.sin(angle) * distance + "px";
+  
+  emoji.style.setProperty("--x-move", xMove);
+  emoji.style.setProperty("--y-move", yMove);
+  emoji.style.fontSize = `${Math.random() * 2 + 1}rem`; 
+
+  document.body.appendChild(emoji);
+  setTimeout(() => emoji.remove(), 1500);
+}
+
+const toast = document.createElement("div");
+toast.innerText = `${plant.name} blasted into your cart! 🌿💥`;
+toast.style.position = "fixed";
+toast.style.bottom = "50px";
+toast.style.right = "20px";
+toast.style.background = "#2e7d32";
+toast.style.color = "white";
+toast.style.padding = "12px 18px";
+toast.style.borderRadius = "10px";
+toast.style.fontWeight = "bold";
+toast.style.boxShadow = "0 4px 10px rgba(0,0,0,0.3)";
+toast.style.zIndex = "10000";
+document.body.appendChild(toast);
+
+setTimeout(() => toast.remove(), 2000);
+
+};
+
 
   const removeFromCart = (id) => setCart(cart.filter(item => item.id !== id));
 
@@ -42,38 +84,6 @@ const App = () => {
     setShowPayment(false);
     setShowCart(false);
   };
-const addToCart = (plant) => {
-  const existingItem = cart.find(item => item.id === plant.id);
-  if (existingItem) {
-    setCart(cart.map(item => item.id === plant.id ? { ...item, quantity: item.quantity + 1 } : item));
-  } else {
-    setCart([...cart, { ...plant, quantity: 1 }]);
-  }
-
-  const emoji = document.createElement("div");
-  emoji.className = "flying-emoji";
-  emoji.innerText = plant.image; // use the plant’s emoji
-  emoji.style.left = Math.random() * window.innerWidth + "px";
-  emoji.style.bottom = "20px";
-  document.body.appendChild(emoji);
-
-  setTimeout(() => emoji.remove(), 1500);
-
-  const toast = document.createElement("div");
-  toast.innerText = `${plant.name} added to cart! 🌸`;
-  toast.style.position = "fixed";
-  toast.style.bottom = "50px";
-  toast.style.right = "20px";
-  toast.style.background = "#4caf50";
-  toast.style.color = "white";
-  toast.style.padding = "10px 15px";
-  toast.style.borderRadius = "8px";
-  toast.style.boxShadow = "0 4px 6px rgba(0,0,0,0.2)";
-  toast.style.zIndex = "10000";
-  document.body.appendChild(toast);
-
-  setTimeout(() => toast.remove(), 2000);
-};
 
   return (
     <div className="App">
@@ -188,6 +198,7 @@ const addToCart = (plant) => {
           </div>
         </div>
       )}
+
       <footer className="footer">
         <div className="container">
           <p>&copy; 2025 Online Store. All rights reserved.</p>
