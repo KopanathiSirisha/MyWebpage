@@ -1,4 +1,4 @@
-
+/* App.css */
 * {
   margin: 0;
   padding: 0;
@@ -10,24 +10,6 @@ body {
   color: #79c4a8;
   background-color: #00ff8481;
 }
-@keyframes fly {
-  0% {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-200px) scale(0.5);
-    opacity: 0;
-  }
-}
-
-.flying-emoji {
-  position: fixed;
-  font-size: 2rem;
-  pointer-events: none;
-  animation: fly 1.5s ease-out forwards;
-  z-index: 9999;
-}
 
 .container {
   max-width: 1200px;
@@ -35,6 +17,7 @@ body {
   padding: 0 20px;
 }
 
+/* Header Styles */
 .header {
   background-color: #2e2d2db9;
   box-shadow: 0 2px 10px rgba(255, 255, 255, 0.702);
@@ -299,6 +282,42 @@ body {
   font-size: 14px;
   margin-bottom: 20px;
 }
+
+@keyframes blast {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x-move), var(--y-move)) scale(0.2);
+    opacity: 0;
+  }
+}
+
+.blast-emoji {
+  position: fixed;
+  font-size: 2rem;
+  pointer-events: none;
+  animation: blast 1.5s ease-out forwards;
+  z-index: 9999;
+}
+
+.flying-emoji {
+  position: fixed;
+  font-size: 2rem;
+  pointer-events: none;
+  animation: fly-burst 2s ease-out forwards;
+  z-index: 9999;
+}
+
+.flying-emoji {
+  position: fixed;
+  font-size: 2rem;
+  pointer-events: none;
+  animation: fly 1.5s ease-out forwards;
+  z-index: 9999;
+}
+
 
 .product-footer {
   display: flex;
