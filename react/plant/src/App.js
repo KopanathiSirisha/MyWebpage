@@ -188,7 +188,6 @@ const addToCart = (plant) => {
           </div>
         </div>
       )}
-
       <footer className="footer">
         <div className="container">
           <p>&copy; 2025 Online Store. All rights reserved.</p>
