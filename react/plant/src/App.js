@@ -42,6 +42,38 @@ const App = () => {
     setShowPayment(false);
     setShowCart(false);
   };
+const addToCart = (plant) => {
+  const existingItem = cart.find(item => item.id === plant.id);
+  if (existingItem) {
+    setCart(cart.map(item => item.id === plant.id ? { ...item, quantity: item.quantity + 1 } : item));
+  } else {
+    setCart([...cart, { ...plant, quantity: 1 }]);
+  }
+
+  const emoji = document.createElement("div");
+  emoji.className = "flying-emoji";
+  emoji.innerText = plant.image; // use the plant’s emoji
+  emoji.style.left = Math.random() * window.innerWidth + "px";
+  emoji.style.bottom = "20px";
+  document.body.appendChild(emoji);
+
+  setTimeout(() => emoji.remove(), 1500);
+
+  const toast = document.createElement("div");
+  toast.innerText = `${plant.name} added to cart! 🌸`;
+  toast.style.position = "fixed";
+  toast.style.bottom = "50px";
+  toast.style.right = "20px";
+  toast.style.background = "#4caf50";
+  toast.style.color = "white";
+  toast.style.padding = "10px 15px";
+  toast.style.borderRadius = "8px";
+  toast.style.boxShadow = "0 4px 6px rgba(0,0,0,0.2)";
+  toast.style.zIndex = "10000";
+  document.body.appendChild(toast);
+
+  setTimeout(() => toast.remove(), 2000);
+};
 
   return (
     <div className="App">
