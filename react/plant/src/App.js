@@ -1,14 +1,13 @@
-// App.js
 import React, { useState } from 'react';
 import './App.css';
 
 const App = () => {
-  // Sample plant data
+  
   const [plants, setPlants] = useState([
     {
       id: 1,
       name: "Monstera Deliciosa",
-      price: 24.99,
+      price: 124,
       image: "🌿",
       description: "Beautiful Swiss Cheese Plant with large leaves",
       inStock: true
@@ -16,7 +15,7 @@ const App = () => {
     {
       id: 2,
       name: "Snake Plant",
-      price: 19.99,
+      price: 190,
       image: "🌱",
       description: "Low maintenance air purifying plant",
       inStock: true
@@ -24,7 +23,7 @@ const App = () => {
     {
       id: 3,
       name: "Fiddle Leaf Fig",
-      price: 34.99,
+      price: 160,
       image: "🪴",
       description: "Popular indoor tree with large violin-shaped leaves",
       inStock: false
@@ -32,7 +31,7 @@ const App = () => {
     {
       id: 4,
       name: "Peace Lily",
-      price: 22.99,
+      price: 120,
       image: "🌸",
       description: "Elegant flowering plant that thrives in shade",
       inStock: true
@@ -40,7 +39,7 @@ const App = () => {
     {
       id: 5,
       name: "Aloe Vera",
-      price: 15.99,
+      price: 100,
       image: "🌵",
       description: "Healing succulent that's easy to care for",
       inStock: true
@@ -48,7 +47,7 @@ const App = () => {
     {
       id: 6,
       name: "Pothos",
-      price: 18.99,
+      price: 50,
       image: "🍃",
       description: "Trailing vine plant perfect for hanging baskets",
       inStock: true
